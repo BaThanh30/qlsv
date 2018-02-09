@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ho ten sinh vien:</strong>
+  <%= @sinhvien.hoten %>
+</p>
+
+<p>
+  <strong>Nam sinh:</strong>
+  <%= @sinhvien.namsinh %>
+</p>
+
+<p>
+  <strong>Dia chi:</strong>
+  <%= @sinhvien.diachi %>
+</p>
+
+<p>
+  <strong>Hinh:</strong>
+  <%= @sinhvien.hinh %>
+</p>
+<p>
+  <strong>Ma lop:</strong>
+  <%= @loph.malop %>
+</p>
+
+<p>
+  <strong>Ten Giang vien:</strong>
+  <%= @loph.tengv %>
+</p>
+
+<p>
+  <strong>Si so:</strong>
+  <%= @loph.siso %>
+</p>
+
+<p>
+  <strong>Ten mon hoc:</strong>
+  <%= @loph.tenmh %>
+  </p>
+
+<%= link_to 'Edit', edit_sinhvien_path(@sinhvien) %>&nbsp&nbsp&nbsp&nbsp
+<%= link_to 'Back', sinhviens_path %>

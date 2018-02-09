@@ -1,0 +1,41 @@
+<%= form_for @sinhvien,html:{multipart: true} do |form| %>
+  <% if sinhvien.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sinhvien.errors.count, "error") %> prohibited this sinhvien from being saved:</h2>
+
+      <ul>
+      <% sinhvien.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :loph_id,'Ma lop hoc'  %>
+    <%= form.text_field :loph_id, id: :sinhvien_loph_id %>
+  </div> 
+  
+  <div class="field">
+    <%= form.label :hoten, 'Ho ten' %>
+    <%= form.text_field :hoten, id: :sinhvien_hoten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :namsinh, 'Nam sinh' %>
+    <%= form.number_field :namsinh, id: :sinhvien_namsinh %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diachi,'Dia chi' %>
+    <%= form.text_field :diachi, id: :sinhvien_diachi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hinh, 'Hinh' %>
+    <%= form.text_field :hinh, id: :sinhvien_hinh %>
+  </div> 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

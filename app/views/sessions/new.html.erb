@@ -1,0 +1,79 @@
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+                    
+                    var loginForm = {
+                        xtype: 'form',
+                        id: 'login-form',
+                        bodyStyle: 'padding:15px;background:transparent',
+                        border: false,
+                        method:'post',
+                        url: '',
+                        items: [{
+                                xtype: 'box',
+                                autoEl: {
+                                    tag: 'div',
+                                    
+                                }
+                            },
+                            {
+                                xtype: 'textfield',
+                                id: 'login-user',
+                                fieldLabel: 'Username',
+                                allowBlank: false,
+                                minLength: 3,
+                                maxLength: 32
+                            },
+                            {
+                                xtype: 'textfield',
+                                id: 'login-pwd',
+                                fieldLabel: 'Password',
+                                inputType: 'password',
+                                allowBlank: false,
+                                minLength: 6,
+                                maxLength: 32
+                            }
+                        ],
+                        buttons: [{
+                            text: 'Login',
+                            handler: function() {
+                                Ext.getCmp('login-form').getForm().submit();
+
+                            }
+                        }, {
+                            text: 'Cancel',
+                            handler: function() {
+                                win.hide();
+                            }
+                        }]
+                    }
+                    Ext.onReady(function() {
+                        win = new Ext.Window({
+                            layout: 'form',
+                            width: 340,
+                            autoHeight: true,
+                            closeAction: 'hide',
+                            items: [loginForm]
+                        });
+                        win.show();
+                    });
+                    </script>

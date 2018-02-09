@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ma lop:</strong>
+  <%= @loph.malop %>
+</p>
+
+<p>
+  <strong>Ten Giang vien:</strong>
+  <%= @loph.tengv %>
+</p>
+
+<p>
+  <strong>Si so:</strong>
+  <%= @loph.siso %>
+</p>
+
+<p>
+  <strong>Ten mon hoc:</strong>
+  <%= @loph.tenmh %>
+</p>
+<%= link_to 'New Sinh Vien',new_sinhvien_path%>
+<%= link_to 'Edit', edit_loph_path(@loph) %> |
+<%= link_to 'Back', lophs_path %>

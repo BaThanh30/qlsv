@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lophs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ma lop</th>
+      <th>Ten Giang vien</th>
+      <th>Si so</th>
+      <th>Ten mon hoc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lophs.each do |loph| %>
+      <tr>
+        <td><%= loph.malop %></td>
+        <td><%= loph.tengv %></td>
+        <td><%= loph.siso %></td>
+        <td><%= loph.tenmh %></td>
+        <td><%= link_to 'Show', loph %></td>
+        <td><%= link_to 'Edit', edit_loph_path(loph) %></td>
+        <td><%= link_to 'Destroy', loph, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loph', new_loph_path %>

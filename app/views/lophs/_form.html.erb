@@ -1,0 +1,40 @@
+<%= form_with(model: loph, local: true) do |form| %>
+  <% if loph.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(loph.errors.count, "error") %> prohibited this loph from being saved:</h2>
+
+      <ul>
+      <% loph.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :malop, 'Ma lop' %>
+    <%= form.text_field :malop, id: :loph_malop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tengv, 'Ten Giang vien' %>
+    <%= form.text_field :tengv, id: :loph_tengv %>
+  </div>
+
+  <div class="field">
+    <%= form.label :siso, 'Si so' %>
+    <%= form.number_field :siso, id: :loph_siso %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tenmh, 'Ten mon hoc' %>
+    <%= form.text_field :tenmh, id: :loph_tenmh %>
+  </div>
+ 
+
+  <div class="actions">
+
+    <%= form.submit %>
+    
+  </div>
+<% end %>
