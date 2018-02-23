@@ -2,6 +2,7 @@
 
 class SinhviensController < ApplicationController
   before_action :set_sinhvien, only: [:show, :edit, :update, :destroy]
+   skip_before_action :verify_authenticity_token
   # require 'pry'
   # GET /sinhviens
   # GET /sinhviens.json

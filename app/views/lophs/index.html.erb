@@ -31,3 +31,108 @@
 <br>
 
 <%= link_to 'New Loph', new_loph_path %>
+
+<script type="text/javascript">
+Ext.onReady(function() {
+
+
+    var loph = new Ext.data.JsonStore({
+        url: 'lophs.json',
+        fields: [
+            'malop',
+            'tengv',
+            'siso',
+            'tenmh'
+        ]
+    });
+
+    loph.load();
+
+
+
+    //var edit = new Ext.form.TextField();
+
+    var grid = new Ext.grid.GridPanel({
+        id: 'myGrip',
+        renderTo: document.body,
+        frame: true,
+        title: 'Lop Database',
+        height: 200,
+        width: 630,
+        store: loph,
+        buttons: [{
+            xtype: 'tbbutton',
+            text: 'Create',
+            handler: function() {
+                
+            }
+
+
+
+        }],
+        columns: [
+            { header: "Ma lop", dataIndex: 'malop' },
+            { header: "Ten giang vien", dataIndex: 'tengv' },
+            { header: "Si so", dataIndex: 'siso' },
+            { header: "Ten mon hoc", dataIndex: 'tenmh' },
+            {
+                xtype: 'actioncolumn',
+                header: 'Button',
+                width: 200,
+                align: 'center',
+                items: [{
+                    icon: 'eye.png',
+                    tooltip: 'Show',
+                    handler: function() {
+                        var selectionRecord = grid.getSelectionModel().getSelected();
+
+                        var val = selectionRecord.id;
+                        Ext.Ajax.request({
+                            url: '/lophs/'+val,
+                            method: 'GET',
+                            success: function() {
+
+                                document.location.href = '<%= lophs_url %>/'+val;
+                            },
+                            params: { id: val }
+                        });
+                    }
+                }, {
+                    icon: 'pencil.png',
+                    tooltip: 'Edit',
+                    handler: function() {
+                        edit_form.show();
+                    }
+                    
+                },{
+                    icon: 'delete-button.png',
+                    tooltip: 'Destroy',
+                    handler: function() {
+                        var selectionRecord = grid.getSelectionModel().getSelected();
+
+                        var val = selectionRecord.id;
+
+                        if (selectionRecord !== undefined) {
+                            grid.store.remove(selectionRecord);
+                        }
+                        Ext.Ajax.request({
+                            url: '/lophs/'+val,
+                            method: 'DELETE',
+                            
+                            success: function() {
+
+                                grid.getStore().remove(val)
+                            },
+                            params: { id: val }
+                    
+                        });
+                }
+            }]
+            
+            }
+        ]
+    });
+});
+</script>
+<script type="text/javascript" src="/loph.js"></script>
+<br>

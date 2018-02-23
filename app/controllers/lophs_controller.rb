@@ -1,10 +1,15 @@
 class LophsController < ApplicationController
   before_action :set_loph, only: [:show, :edit, :update, :destroy]
+   skip_before_action :verify_authenticity_token
 
   # GET /lophs
   # GET /lophs.json
   def index
     @lophs = Loph.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @lophs}
+    end
   end
 
   # GET /lophs/1
@@ -54,6 +59,7 @@ class LophsController < ApplicationController
   # DELETE /lophs/1
   # DELETE /lophs/1.json
   def destroy
+    
     @loph.destroy
     respond_to do |format|
       format.html { redirect_to lophs_url, notice: 'Loph was successfully destroyed.' }
