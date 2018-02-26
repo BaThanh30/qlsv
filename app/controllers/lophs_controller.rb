@@ -75,6 +75,6 @@ class LophsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def loph_params
-      params.require(:loph).permit(:malop, :tengv, :siso, :tenmh)
+      params.permit(:malop, :tengv, :siso, :tenmh)
     end
 end

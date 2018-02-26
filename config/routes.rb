@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
-
+  post 'lophs', to: 'lophs#create'
+  
+  post 'sinhviens', to: 'sinhviens#create'
   resources :users
   resources :lophs
   root 'home#index'

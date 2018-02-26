@@ -47,9 +47,6 @@ Ext.onReady(function() {
     });
 
     loph.load();
-
-
-
     //var edit = new Ext.form.TextField();
 
     var grid = new Ext.grid.GridPanel({
@@ -64,7 +61,7 @@ Ext.onReady(function() {
             xtype: 'tbbutton',
             text: 'Create',
             handler: function() {
-                
+                loph_form.show();
             }
 
 
@@ -84,18 +81,8 @@ Ext.onReady(function() {
                     icon: 'eye.png',
                     tooltip: 'Show',
                     handler: function() {
-                        var selectionRecord = grid.getSelectionModel().getSelected();
-
-                        var val = selectionRecord.id;
-                        Ext.Ajax.request({
-                            url: '/lophs/'+val,
-                            method: 'GET',
-                            success: function() {
-
-                                document.location.href = '<%= lophs_url %>/'+val;
-                            },
-                            params: { id: val }
-                        });
+                        
+                        show_form.show();
                     }
                 }, {
                     icon: 'pencil.png',
@@ -118,7 +105,7 @@ Ext.onReady(function() {
                         Ext.Ajax.request({
                             url: '/lophs/'+val,
                             method: 'DELETE',
-                            
+
                             success: function() {
 
                                 grid.getStore().remove(val)
@@ -134,5 +121,7 @@ Ext.onReady(function() {
     });
 });
 </script>
-<script type="text/javascript" src="/loph.js"></script>
+<script type="text/javascript" src="/loph_form.js"></script>
+<script type="text/javascript" src="/show_form.js"></script>
+<script type="text/javascript" src="/sv_form.js"></script>
 <br>

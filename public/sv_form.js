@@ -1,10 +1,10 @@
-var loph_form = new Ext.Window({
+var sv_form = new Ext.Window({
     url: '...',
     hidden: true,
 
     renderTo: document.body,
     frame: true,
-    title: 'User Form',
+    title: 'Lop Form',
     width: 300,
     height:200,
     layout: 'form',
@@ -13,62 +13,59 @@ var loph_form = new Ext.Window({
 
 
         xtype: 'textfield',
-        fieldLabel: 'Ma Lop',
+        fieldLabel: 'Ma lop hoc',
         name: 'malop',
-        id: 'loph_malop',
+        id: 'sinhvien_loph_id',
         
         allowBlank: false
     },{
         xtype: 'textfield',
-        fieldLabel: 'Ten Giang vien',
-        name: 'tengv',
-        id: 'tengv',
+        fieldLabel: 'Ho ten',
+        name: 'hoten',
+        id: 'sinhvien_hoten',
         allowBlank: false
 
-    }, {
+    },{
         xtype: 'textfield',
-        fieldLabel: 'Si so',
-        name: 'siso',
-        id: 'siso',
+        fieldLabel: 'Nam sinh',
+        name: 'namsinh',
+        id: 'sinhvien_namsinh',
         allowBlank: false
 
-    }, {
+    },{
         xtype: 'textfield',
-        fieldLabel: 'Ten Mon hoc',
-        name: 'tenmh',
-        id: 'tenmh',
+        fieldLabel: 'Dia chi',
+        name: 'diachi',
+        id: 'sinhvien_diachi',
         allowBlank: false
 
     }], 
     buttons:[{
         xtype: 'tbbutton',
-        text: 'Create Loph',
+        text: 'Create Sinhvien',
 
         listeners: {
             click: function() {
-                var a = Ext.getCmp("malop").getValue();
-                var b = Ext.getCmp("tengv").getValue();
-                var c = Ext.getCmp("siso").getValue();
-                var d = Ext.getCmp("tenmh").getValue();
+                var a = Ext.getCmp("sinhvien_loph_id").getValue();
+                var b = Ext.getCmp("sinhvien_hoten").getValue();
+                var c = Ext.getCmp("sinhvien_namsinh").getValue();
+                var d = Ext.getCmp("sinhvien_diachi").getValue();
 
                 Ext.Ajax.request({
-                    url: '/lophs',
+                    url: '/sinhviens',
                     method: 'POST',
                     params: {
                         malop: a,
-                        tengv: b,
-                        siso: c,
-                        tenmh:d
-
-
+                        hoten: b,
+                        namsinh: c,
+                        daichi: d
                     },
                     success: function(response, opts) {
-                        alert('success')
+                        
                         Ext.getCmp("myGrip").getStore().load();
                         Ext.getCmp("myGrip").getView().refresh();
                         loph_form.hide();
                         window.location.reload();
-
                     },
                     failure: function() {
                         alert('fail');
@@ -82,7 +79,7 @@ var loph_form = new Ext.Window({
         xtype: 'tbbutton',
         text: 'Back',
         handler: function() {
-            location.href = "/lophs";
+            location.href = "/sinhviens";
         }
 
     }],
