@@ -37,12 +37,18 @@ var show_form = new Ext.Window({
         allowBlank: false
 
     }], 
-    buttons: [{
-            xtype: 'tbbutton',
+    buttons:[{
+         xtype: 'tbbutton',
             text: 'Create',
             handler: function() {
-                sv_form.show();
-            }
-            }],
+                loph_form.show();
+            }, {
+        xtype: 'tbbutton',
+        text: 'Back',
+        handler: function() {
+            location.href = "/lophs";
+        }
+
+    }],
 
 });

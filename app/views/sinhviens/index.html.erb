@@ -31,3 +31,94 @@
 <br>
 
 <%= link_to 'New Sinhvien', new_sinhvien_path %>
+
+<script type="text/javascript">
+Ext.onReady(function() {
+
+
+    var loph = new Ext.data.JsonStore({
+        url: 'sinhviens.json',
+        fields: [
+            'loph_id',
+            'hoten',
+            'namsinh',
+            'diachi'
+        ]
+    });
+
+    loph.load();
+    //var edit = new Ext.form.TextField();
+
+    var grid = new Ext.grid.GridPanel({
+        id: 'myGrip',
+        renderTo: document.body,
+        frame: true,
+        title: 'Sinhvien Database',
+        height: 200,
+        width: 630,
+        store: loph,
+        buttons: [{
+            xtype: 'tbbutton',
+            text: 'Create',
+            handler: function() {
+                sv_form.show();
+            }
+
+
+
+        }],
+        columns: [
+            { id: "Ma lop", dataIndex: 'id'}, 
+            { header: "Ho ten", dataIndex: 'hoten' }, 
+            { header: "Nam sinh", dataIndex: 'namsinh' },
+            { header: "Dia chi", dataIndex: 'diachi' },
+            {
+                xtype: 'actioncolumn',
+                header: 'Button',
+                width: 200,
+                align: 'center',
+                items: [{
+                    icon: 'eye.png',
+                    tooltip: 'Show',
+                    handler: function() {
+                        
+                        show_form.show();
+                    }
+                }, {
+                    icon: 'pencil.png',
+                    tooltip: 'Edit',
+                    handler: function() {
+                        edit_form.show();
+                    }
+                    
+                },{
+                    icon: 'delete-button.png',
+                    tooltip: 'Destroy',
+                    handler: function() {
+                        var selectionRecord = grid.getSelectionModel().getSelected();
+
+                        var val = selectionRecord.id;
+
+                        if (selectionRecord !== undefined) {
+                            grid.store.remove(selectionRecord);
+                        }
+                        Ext.Ajax.request({
+                            url: '/sinhviens/'+val,
+                            method: 'DELETE',
+
+                            success: function() {
+
+                                grid.getStore().remove(val)
+                            },
+                            params: { id: val }
+                    
+                        });
+                }
+            }]
+            
+            }
+        ]
+    });
+});
+</script>
+<script type="text/javascript" src="/sv_form.js"></script>

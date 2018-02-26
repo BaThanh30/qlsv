@@ -28,7 +28,8 @@ class SinhviensController < ApplicationController
   # POST /sinhviens
   # POST /sinhviens.json
   def create
-    @sinhvien = Sinhvien.new(sinhvien_params)
+    @id_lop = Loph.find_by(malop: params['malop']).id
+    @sinhvien = Sinhvien.new(loph_id: @id_lop, hoten: params['hoten'], namsinh: params['namsinh'],diachi: params['diachi'],hinh: "")
 
 
     respond_to do |format|

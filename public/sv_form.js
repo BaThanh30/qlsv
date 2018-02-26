@@ -1,5 +1,4 @@
 var sv_form = new Ext.Window({
-    url: '...',
     hidden: true,
 
     renderTo: document.body,
@@ -8,7 +7,7 @@ var sv_form = new Ext.Window({
     width: 300,
     height:200,
     layout: 'form',
-    url: 'loph_form.submit',
+    url: 'sv_form.submit',
     items: [{
 
 
@@ -58,13 +57,13 @@ var sv_form = new Ext.Window({
                         malop: a,
                         hoten: b,
                         namsinh: c,
-                        daichi: d
+                        diachi: d
                     },
                     success: function(response, opts) {
                         
                         Ext.getCmp("myGrip").getStore().load();
                         Ext.getCmp("myGrip").getView().refresh();
-                        loph_form.hide();
+                        sv_form.hide();
                         window.location.reload();
                     },
                     failure: function() {
