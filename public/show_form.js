@@ -1,7 +1,9 @@
+
+
 var show_form = new Ext.Window({
     url: '...',
     hidden: true,
-    
+    closeAction: 'hide',
     renderTo: document.body,
     frame: true,
     title: 'Lop Form',
@@ -20,6 +22,7 @@ var show_form = new Ext.Window({
         fieldLabel: 'Ten Giang vien',
         name: 'tengv',
         id: 'tengv',
+
         allowBlank: false
 
     }, {
@@ -41,14 +44,15 @@ var show_form = new Ext.Window({
          xtype: 'tbbutton',
             text: 'Create',
             handler: function() {
-                loph_form.show();
-            }, {
-        xtype: 'tbbutton',
-        text: 'Back',
-        handler: function() {
-            location.href = "/lophs";
+                sv_form.show();
+            }
+        }, {
+            xtype: 'tbbutton',
+            text: 'Back',
+            handler: function() {
+                location.href = "/lophs";
         }
 
-    }],
+    }]
 
 });

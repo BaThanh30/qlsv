@@ -1,7 +1,7 @@
 var loph_form = new Ext.Window({
     url: '...',
     hidden: true,
-
+    closeAction: 'hide',
     renderTo: document.body,
     frame: true,
     title: 'Lop Form',
